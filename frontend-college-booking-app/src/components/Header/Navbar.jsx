@@ -1,15 +1,22 @@
 import { AppBar, Autocomplete, Box, Tab, Tabs, TextField, Toolbar } from "@mui/material"
 
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getAllColleges } from "../../api-helpers/Api-helper";
 
 
 const Navbar = () => {
 
 const dummyArray = ["kings college", "MotherLand", "FatherLand"]
 const [value, setValue] = useState(0);
+const [data, setData] = useState([]);
 
-
+useEffect(() => {
+    getAllColleges()
+      .then((data) => setData(data))
+      .catch((err) => console.log(err));
+  }, []);
+  console.log(data);
 
   return (
     <AppBar  sx={{ bgcolor: "#2b2d42" }}>
@@ -26,14 +33,14 @@ const [value, setValue] = useState(0);
         options={dummyArray.map((option) => option)}
         renderInput={(params) => <TextField sx={{
             borderRadius: 2,
-            input: { color: "white" },
+            input: { color: "inherit" },
             bgcolor: "#2b2d42",
             padding: "6px",
           }} variant="standard" {...params} label="Search College" />}
       />
             </Box>
             <Box display={"flex"}>
-                <Tabs textColor="white" indicatorColor="secondary" value={value} onChange={(e, val) => setValue(val)} >
+                <Tabs textColor="inherit" indicatorColor="secondary" value={value} onChange={(e, val) => setValue(val)} >
                     <Tab label="All Colleges"/>
                     <Tab label="Auth"/>
                     <Tab label="Admin"/>
