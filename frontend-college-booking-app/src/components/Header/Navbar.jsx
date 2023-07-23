@@ -28,7 +28,7 @@ useEffect(() => {
     </Box>
     <Box flexGrow={1} margin="auto">
       <Autocomplete
-        sx={{ borderRadius: 10, width: "30%", maxWidth: 300 }} // Adjust the maxWidth as per your needs
+        sx={{ borderRadius: 10, width: "50%"}} // Adjust the maxWidth as per your needs
         id="free-solo-demo"
         freeSolo
         options={dummyArray.map((option) => option)}
