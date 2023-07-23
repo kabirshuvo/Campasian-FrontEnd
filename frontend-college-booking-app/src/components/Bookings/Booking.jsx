@@ -6,7 +6,7 @@ import { getCollegeDetails, newBooking, } from "../../api-helpers/Api-helper";
 
 const Booking = () => {
   const [college, setCollege] = useState();
-  const [inputs, setInputs] = useState({ seatNumber: "", date: "" });
+  const [inputs, setInputs] = useState({ subjectId: "", date: "" });
   const id = useParams().id;
   console.log(id);
 
@@ -48,7 +48,7 @@ const Booking = () => {
               justifyContent={"column"}
               flexDirection="column"
               paddingTop={3}
-              width="50%"
+              width="60%"
               marginRight={"auto"}
             >
               <img
@@ -69,7 +69,7 @@ const Booking = () => {
                 </Typography>
               </Box>
             </Box>
-            <Box width={"50%"} paddingTop={3}>
+            <Box width={"40%"} paddingTop={3}>
               <form onSubmit={handleSubmit}>
                 <Box
                   padding={5}
@@ -77,10 +77,10 @@ const Booking = () => {
                   display="flex"
                   flexDirection={"column"}
                 >
-                  <FormLabel>Roll Number</FormLabel>
+                  <FormLabel>Subject Id Number</FormLabel>
                   <TextField
-                    name="seatNumber"
-                    value={inputs.seatNumber}
+                    name="subjectId"
+                    value={inputs.subjectId}
                     onChange={handleChange}
                     type={"number"}
                     margin="normal"
