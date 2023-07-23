@@ -1,6 +1,8 @@
 import { Button, Card, CardActions, CardContent, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
-const CollegeCard = ({title, description, posterUrl,stublishDate, _id}) => {
+const CollegeCard = ({title, id, description, posterUrl, stublishDate }) => {
+  // console.log(id)
   return (
     <Card
       sx={{
@@ -31,9 +33,9 @@ const CollegeCard = ({title, description, posterUrl,stublishDate, _id}) => {
         <Button sx={{margin: 'auto'}}  size="small">View Details</Button>
         {/* <Button size="small">Learn More</Button> */}
         <Button
-        //   LinkComponent={Link}
-        //   to="/colleges"
-        //   variant="outlined"
+          LinkComponent={Link}
+          to={`/booking/${id}`}
+          variant="outlined"
           sx={{ margin: "auto", color: "#2b2d42" }}
           size="small"
         >

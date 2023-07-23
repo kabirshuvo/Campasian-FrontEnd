@@ -38,7 +38,13 @@ const Colleges = () => {
       <Box
       margin={'auto'} display="flex" width="100%" justifyContent={"center"} flexWrap="wrap" alignItems={'center'}
       >
-{colleges && colleges.map((college, index)=> <CollegeCard id={college.id} title={college.title} description={college.description} posterUrl={college.posterUrl} stublishDate={college.stublishDate} key={index}/>)}
+        {colleges && 
+          colleges.map((college, index)=> <CollegeCard 
+            id={college._id} 
+            title={college.title} 
+            description={college.description} 
+            posterUrl={college.posterUrl} 
+          stublishDate={college.stublishDate} key={index}/>)}
       </Box>
       <Box display="flex" padding={5} margin="auto">
         <Button

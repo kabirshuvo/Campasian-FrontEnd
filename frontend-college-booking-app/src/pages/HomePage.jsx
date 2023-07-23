@@ -13,7 +13,7 @@ useEffect(() => {
     .then((data) => setColleges(data.colleges))
     .catch((err) => console.log(err));
 }, []);
-// console.log(colleges)
+console.log(colleges)
 
   return (
     <Box width={"100%"} height="100%" margin="auto" marginTop={2}>
@@ -35,7 +35,7 @@ useEffect(() => {
       <Box
       margin={'auto'} display="flex" width="100%" justifyContent={"center"} flexWrap="wrap" alignItems={'center'}
       >
-{colleges && colleges.slice(0, 6).map((college, index)=> <CollegeCard id={college.id} title={college.title} description={college.description} posterUrl={college.posterUrl} stublishDate={college.stublishDate} key={index}/>)}
+{colleges && colleges.slice(0, 6).map((college, index)=> <CollegeCard id={college._id} title={college.title} description={college.description} posterUrl={college.posterUrl} stublishDate={college.stublishDate} key={index}/>)}
       </Box>
       <Box display="flex" padding={5} margin="auto">
         <Button
