@@ -6,7 +6,7 @@ import { getCollegeDetails, newBooking, } from "../../api-helpers/Api-helper";
 
 const Booking = () => {
   const [college, setCollege] = useState();
-  const [inputs, setInputs] = useState({ subjectId: "", date: "" });
+  const [inputs, setInputs] = useState({ idNumber: "", date: "" });
   const id = useParams().id;
   console.log(id);
 
@@ -15,7 +15,7 @@ const Booking = () => {
       .then((res) => setCollege(res.college))
       .catch((err) => console.log(err));
   }, [id]);
-  console.log(college)
+//   console.log(college)
 
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -26,7 +26,7 @@ const Booking = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-    newBooking({ ...inputs, College: college._id })
+    newBooking({ ...inputs, college: college._id })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
@@ -79,8 +79,8 @@ const Booking = () => {
                 >
                   <FormLabel>Subject Id Number</FormLabel>
                   <TextField
-                    name="subjectId"
-                    value={inputs.subjectId}
+                    name="idNumber"
+                    value={inputs.idNumber}
                     onChange={handleChange}
                     type={"number"}
                     margin="normal"
