@@ -13,7 +13,7 @@ useEffect(() => {
     .then((data) => setColleges(data.colleges))
     .catch((err) => console.log(err));
 }, []);
-console.log(colleges)
+// console.log(colleges)
 
   return (
     <Box width={"100%"} height="100%" margin="auto" marginTop={2}>

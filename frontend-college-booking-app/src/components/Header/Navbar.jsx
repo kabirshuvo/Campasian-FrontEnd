@@ -17,7 +17,7 @@ useEffect(() => {
       .then((data) => setData(data))
       .catch((err) => console.log(err));
   }, []);
-  console.log(data);
+//   console.log(data);
 
   return (
     <AppBar position="sticky"  sx={{ bgcolor: "#2b2d42" }}>
