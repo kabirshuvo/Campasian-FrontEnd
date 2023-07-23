@@ -27,3 +27,19 @@ export const sendUserAuthRequest = async (data, signup) => {
   return resData;
 };
 
+
+export const sendAdminAuthRequest = async (data) => {
+  const res = await axios
+    .post("/admin/login", {
+      email: data.email,
+      password: data.password,
+    })
+    .catch((err) => console.log(err));
+
+  if (res.status !== 200) {
+    return console.log("Unexpectyed Error");
+  }
+
+  const resData = await res.data;
+  return resData;
+};

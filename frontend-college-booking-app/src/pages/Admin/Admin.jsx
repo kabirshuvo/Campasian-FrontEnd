@@ -1,8 +1,8 @@
+import { sendAdminAuthRequest } from "../../api-helpers/Api-helper";
 import AuthForm from "../../components/Header/Auth/AuthForm"
 
 // import { useDispatch } from "react-redux";
 // import { useNavigate } from "react-router-dom";
-// import { sendAdminAuthRequest } from "../../api-helpers/api-helpers";
 // import { adminActions } from "../../store";
 
 const Admin = () => {
@@ -17,9 +17,13 @@ const Admin = () => {
   // };
   const getData = (data) => {
     console.log("Admin", data);
-    // sendAdminAuthRequest(data.inputs)
-    //   .then(onResReceived)
-    //   .catch((err) => console.log(err));
+    sendAdminAuthRequest(data.inputs)
+      .then((res)=> console.log(res))
+      .catch((err) => console.log(err));
+
+      // sendAdminAuthRequest(data.inputs)
+      // .then(onResReceived)
+      // .catch((err) => console.log(err));
   };
   return (
     <div>
