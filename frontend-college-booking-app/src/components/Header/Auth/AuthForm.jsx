@@ -9,6 +9,7 @@ const AuthForm = () => {
         email: "",
         password: "",
       });
+      const [isSignup, setIsSignup] = useState(false);
   return (
     <Dialog PaperProps={{ style: { borderRadius: 20 } }} open={true}>
       <Box sx={{ ml: "auto", padding: 1 }}>
@@ -17,7 +18,7 @@ const AuthForm = () => {
         </IconButton>
       </Box>
       <Typography variant="h4" textAlign={"center"}>
-        {/* {isSignup ? "Signup" : "Login"} */}
+        {isSignup ? "Signup" : "Login"}
         Login
       </Typography>
       <form 
@@ -32,9 +33,9 @@ const AuthForm = () => {
           margin="auto"
           alignContent={"center"}
         >
-          {/* {!isAdmin && isSignup && ( */}
+          {!isSignup && (
             <>
-              {" "}
+            
               <FormLabel sx={labelStyle}>Name</FormLabel>
               <TextField
                 value={inputs.name}
@@ -45,7 +46,7 @@ const AuthForm = () => {
                 name="name"
               />
             </>
-          {/* )} */}
+          )} 
           <FormLabel sx={labelStyle}>Email</FormLabel>
           <TextField
             value={inputs.email}
@@ -75,12 +76,11 @@ const AuthForm = () => {
           </Button>
           {/* {!isAdmin && ( */}
             <Button
-            //   onClick={() => setIsSignup(!isSignup)}
+              onClick={() => setIsSignup(!isSignup)}
               sx={{ mt: 2, borderRadius: 10 }}
               fullWidth
             >
-              Switch To 
-              {/* {isSignup ? "Login" : "Signup"} */}
+              Switch To {isSignup ? "Login" : "Signup"}
             </Button>
           {/* )} */}
         </Box>
