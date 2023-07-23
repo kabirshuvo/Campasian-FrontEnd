@@ -8,6 +8,7 @@ import Auth from "./components/Header/Auth/Auth"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { adminActions, userActions } from "./store"
+import Booking from "./components/Bookings/Booking"
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/colleges" element={<Colleges/>} />
         <Route path="/admin" element={<Admin/>} />
         <Route path="/auth" element={<Auth/>} />
+        <Route path="/booking/:id" element={<Booking/>} />
       </Routes>
     </section>
     </div>
