@@ -3,13 +3,28 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 const labelStyle = { mt: 1, mb: 1 };
-const AuthForm = () => {
+const AuthForm = ({onSubmit, isAdmin}) => {
     const [inputs, setInputs] = useState({
         name: "",
         email: "",
         password: "",
       });
+
       const [isSignup, setIsSignup] = useState(false);
+
+      const handleChange = (e) => {
+        setInputs((prevState) => ({
+          ...prevState,
+          [e.target.name]: e.target.value,
+        }));
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        onSubmit({ inputs,  signup: isAdmin ? false : isSignup});
+        // 
+        console.log(inputs)
+      };
   return (
     <Dialog PaperProps={{ style: { borderRadius: 20 } }} open={true}>
       <Box sx={{ ml: "auto", padding: 1 }}>
@@ -19,10 +34,10 @@ const AuthForm = () => {
       </Box>
       <Typography variant="h4" textAlign={"center"}>
         {isSignup ? "Signup" : "Login"}
-        Login
+        
       </Typography>
       <form 
-    //   onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
       >
         <Box
           padding={6}
@@ -33,13 +48,13 @@ const AuthForm = () => {
           margin="auto"
           alignContent={"center"}
         >
-          {!isSignup && (
+          {!isAdmin && isSignup && (
             <>
             
               <FormLabel sx={labelStyle}>Name</FormLabel>
               <TextField
                 value={inputs.name}
-                // onChange={handleChange}
+                onChange={handleChange}
                 margin="normal"
                 variant="standard"
                 type={"text"}
@@ -50,7 +65,7 @@ const AuthForm = () => {
           <FormLabel sx={labelStyle}>Email</FormLabel>
           <TextField
             value={inputs.email}
-            // onChange={handleChange}
+            onChange={handleChange}
             margin="normal"
             variant="standard"
             type={"email"}
@@ -59,7 +74,7 @@ const AuthForm = () => {
           <FormLabel sx={labelStyle}>Password</FormLabel>
           <TextField
             value={inputs.password}
-            // onChange={handleChange}
+            onChange={handleChange}
             margin="normal"
             variant="standard"
             type={"password"}
@@ -71,10 +86,10 @@ const AuthForm = () => {
             fullWidth
             variant="contained"
           >
-            login
-            {/* {isSignup ? "Signup" : "Login"} */}
+            
+            {isSignup ? "Signup" : "Login"}
           </Button>
-          {/* {!isAdmin && ( */}
+          {!isAdmin && ( 
             <Button
               onClick={() => setIsSignup(!isSignup)}
               sx={{ mt: 2, borderRadius: 10 }}
@@ -82,7 +97,7 @@ const AuthForm = () => {
             >
               Switch To {isSignup ? "Login" : "Signup"}
             </Button>
-          {/* )} */}
+           )}
         </Box>
       </form>
     </Dialog>
