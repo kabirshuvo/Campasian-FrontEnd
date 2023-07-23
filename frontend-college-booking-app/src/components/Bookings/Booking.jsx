@@ -6,7 +6,7 @@ import { getCollegeDetails, newBooking, } from "../../api-helpers/Api-helper";
 
 const Booking = () => {
   const [college, setCollege] = useState();
-  const [inputs, setInputs] = useState({ idNumber: "", date: "" });
+  const [inputs, setInputs] = useState({ subjectId: "", date: "" });
   const id = useParams().id;
   console.log(id);
 
@@ -79,8 +79,8 @@ const Booking = () => {
                 >
                   <FormLabel>Subject Id Number</FormLabel>
                   <TextField
-                    name="idNumber"
-                    value={inputs.idNumber}
+                    name="subjectId"
+                    value={inputs.subjectId}
                     onChange={handleChange}
                     type={"number"}
                     margin="normal"

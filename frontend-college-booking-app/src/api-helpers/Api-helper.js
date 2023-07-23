@@ -57,7 +57,7 @@ export const newBooking = async (data) => {
   const res = await axios
     .post("/booking", {
       college: data.college,
-      idNumber: data.subjectId,
+      subjectId: data.subjectId,
       date: data.date,
       user: localStorage.getItem("userId"),
     })
