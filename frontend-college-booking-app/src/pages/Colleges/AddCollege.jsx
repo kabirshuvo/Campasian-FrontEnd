@@ -1,3 +1,7 @@
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+
 import {
     Box,
     Button,
@@ -32,8 +36,14 @@ import { addCollege } from "../../api-helpers/Api-helper";
       e.preventDefault();
       console.log(inputs, subjects);
       addCollege({ ...inputs, subjects })
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
+        .then((res) => {
+          console.log(res);
+          toast.success("New college added successfully!"); // Show success notification
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error("Failed to add new college."); // Show error notification
+        });
     };
     return (
       <div>
@@ -128,6 +138,8 @@ import { addCollege } from "../../api-helpers/Api-helper";
             </Button>
           </Box>
         </form>
+
+        <ToastContainer position="top-right" autoClose={3000} />
       </div>
     );
   };

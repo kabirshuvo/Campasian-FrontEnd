@@ -1,48 +1,67 @@
 import { Button, Card, CardActions, CardContent, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const CollegeCard = ({title, id, description, posterUrl, stublishDate }) => {
+const CollegeCard = ({ title, id, description, posterUrl, stublishDate }) => {
+  const navigate = useNavigate();
+  const isUserLoggedIn = useSelector((state) => state.user.isLoggedIn);
+
+  const handleBookNow = () => {
+    if (isUserLoggedIn) {
+      // User is logged in, navigate to the booking page
+      navigate(`/booking/${id}`);
+    } else {
+      // User is not logged in, navigate to the Auth page
+      navigate("/auth");
+    }
+  };
 
   return (
     <Card
       sx={{
-        margin: 1,
-        width: 300, 
-        height: 320,
+        width: 300,
+        height: "100%", // Make the card take the full height of its container
         borderRadius: 5,
-        ":hover": {
-          boxShadow: "10px 10px 20px #ccc",
-        },
-        display: 'flex',
-        flexDirection: 'column', 
-        justifyContent: 'space-between', 
-        textAlign: "center"
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        textAlign: "center",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <img height={'50%'} width={'100%'} src={posterUrl} alt={description} />
+      <img
+        src={posterUrl}
+        alt={description}
+        style={{
+          height: "50%", // Adjust the height of the image to occupy 50% of the card's height
+          width: "100%",
+          borderTopLeftRadius: 5,
+          borderTopRightRadius: 5,
+          objectFit: "cover",
+        }}
+      />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div">
           {title}
         </Typography>
-        <Typography variant="body2" color="text.primary">
-            stublis Date:
-        {new Date(stublishDate).toDateString()}
+        <Typography variant="body2" color="text.secondary">
+          Established at: {new Date(stublishDate).toDateString()}
         </Typography>
       </CardContent>
       <CardActions>
-        {/* <Button sx={{margin: 'auto'}}  size="small">View Details</Button> */}
-        {/* <Button size="small">Learn More</Button> */}
         <Button
-          LinkComponent={Link}
-          to={`/booking/${id}`}
+          onClick={handleBookNow}
           variant="contained"
           fullWidth
-          sx={{ margin: "auto", bgcolor:"#2b2d42", ":hover": {
-            bgcolor:"#121217"
-          }}}
+          sx={{
+            bgcolor: "#2b2d42",
+            ":hover": {
+              bgcolor: "#121217",
+            },
+          }}
           size="small"
         >
-          View Details
+          Book Now
         </Button>
       </CardActions>
     </Card>
