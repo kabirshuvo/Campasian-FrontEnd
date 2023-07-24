@@ -9,6 +9,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { adminActions, userActions } from "./store"
 import Booking from "./components/Bookings/Booking"
+import AddCollege from "./pages/Colleges/AddCollege"
+import AdminProfile from "./profile/AdminProfile"
+import UserProfile from "./profile/UserProfile"
 
 
 function App() {
@@ -31,9 +34,22 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/colleges" element={<Colleges/>} />
-        <Route path="/admin" element={<Admin/>} />
+      {!isUserLoggedIn && !isAdminLoggedIn && <>
+       <Route path="/admin" element={<Admin/>} />
         <Route path="/auth" element={<Auth/>} />
+       </>}
+
+      { isUserLoggedIn && !isAdminLoggedIn && <>
+        <Route path="/user" element={<UserProfile/>} />
         <Route path="/booking/:id" element={<Booking/>} />
+        </>}
+
+
+       {isAdminLoggedIn && !isUserLoggedIn && <>
+        <Route path="/addCollege" element={<AddCollege/>} />
+        <Route path="/user-admin" element={<AdminProfile/>} />
+        </>}
+
       </Routes>
     </section>
     </div>

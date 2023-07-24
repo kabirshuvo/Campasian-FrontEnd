@@ -8,14 +8,14 @@ const Booking = () => {
   const [college, setCollege] = useState();
   const [inputs, setInputs] = useState({ subjectId: "", date: "" });
   const id = useParams().id;
-  console.log(id);
+  // console.log(college);
 
   useEffect(() => {
     getCollegeDetails(id)
       .then((res) => setCollege(res.college))
       .catch((err) => console.log(err));
   }, [id]);
-//   console.log(college)
+  // console.log(college)
 
   const handleChange = (e) => {
     setInputs((prevState) => ({

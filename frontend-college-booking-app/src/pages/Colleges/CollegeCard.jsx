@@ -2,7 +2,7 @@ import { Button, Card, CardActions, CardContent, Typography } from "@mui/materia
 import { Link } from "react-router-dom";
 
 const CollegeCard = ({title, id, description, posterUrl, stublishDate }) => {
-  // console.log(id)
+
   return (
     <Card
       sx={{
@@ -30,16 +30,19 @@ const CollegeCard = ({title, id, description, posterUrl, stublishDate }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button sx={{margin: 'auto'}}  size="small">View Details</Button>
+        {/* <Button sx={{margin: 'auto'}}  size="small">View Details</Button> */}
         {/* <Button size="small">Learn More</Button> */}
         <Button
           LinkComponent={Link}
           to={`/booking/${id}`}
-          variant="outlined"
-          sx={{ margin: "auto", color: "#2b2d42" }}
+          variant="contained"
+          fullWidth
+          sx={{ margin: "auto", bgcolor:"#2b2d42", ":hover": {
+            bgcolor:"#121217"
+          }}}
           size="small"
         >
-          Book Now
+          View Details
         </Button>
       </CardActions>
     </Card>
